@@ -24,5 +24,5 @@ repos:
         entry: uv run pytest tests/units
         language: system
         pass_filenames: false
-        files: ^(src/|tests/units/)
+        files: ^tests/units/|src/.*(?<!__init__)\.py$
         stages: [pre-commit]
