@@ -16,13 +16,3 @@ repos:
       - id: ruff
         args: [--fix]
       - id: ruff-format
-
-  - repo: local
-    hooks:
-      - id: unit-tests
-        name: run unit tests
-        entry: uv run pytest tests/units
-        language: system
-        pass_filenames: false
-        files: ^tests/units/|src/.*(?<!__init__)\.py$
-        stages: [pre-commit]
