@@ -2,6 +2,10 @@
 
 Retrieve relevant pages from a PDF using SigLIP image and text embeddings.
 
+## Project Status
+
+Early-stage multimodal retrieval prototype.
+
 ## Setup
 
 Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).
