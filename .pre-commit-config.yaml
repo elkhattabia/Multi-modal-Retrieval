@@ -14,3 +14,11 @@ repos:
       - id: ruff
         args: [--fix]
       - id: ruff-format
+
+  - repo: local
+    hooks:
+      - id: stage-ruff-fixes
+        name: Stage Ruff fixes
+        entry: git add --
+        language: system
+        types: [python]
