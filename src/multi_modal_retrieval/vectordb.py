@@ -5,9 +5,9 @@ import os
 from dotenv import load_dotenv
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
-from multi_modal_retrieval.embedder import index_documents
-from multi_modal_retrieval.loader import load_documents_from_directory
 from multi_modal_retrieval.setup import Paths
+from multi_modal_retrieval.vectorize.embedder import index_documents
+from multi_modal_retrieval.vectorize.loader import load_documents_from_directory
 
 
 def run_db() -> None:

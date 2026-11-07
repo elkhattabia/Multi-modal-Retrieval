@@ -2,7 +2,7 @@ from pathlib import Path
 
 from langchain_core.documents import Document
 
-from multi_modal_retrieval import embedder
+from multi_modal_retrieval.vectorize import embedder
 
 
 class FakeChroma:

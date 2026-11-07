@@ -2,8 +2,8 @@ import json
 
 import pytest
 
-from multi_modal_retrieval.loader import load_documents_from_directory
 from multi_modal_retrieval.setup import Paths
+from multi_modal_retrieval.vectorize.loader import load_documents_from_directory
 
 
 def _write_dataset(tmp_path, qa_records, document_files):
