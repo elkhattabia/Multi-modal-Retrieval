@@ -9,11 +9,11 @@ def test_main_stops_when_gemini_api_key_is_missing(monkeypatch, tmp_path):
     )
 
     try:
-        vectordb.main()
+        vectordb.run_db()
     except SystemExit as error:
         assert "GEMINI_API_KEY" in str(error)
     else:
-        raise AssertionError("main() should stop when the API key is missing")
+        raise AssertionError("run_db() should stop when the API key is missing")
 
 
 def test_main_loads_blocks_and_indexes_them(monkeypatch, tmp_path, capsys):
@@ -45,7 +45,7 @@ def test_main_loads_blocks_and_indexes_them(monkeypatch, tmp_path, capsys):
     monkeypatch.setattr(vectordb, "GoogleGenerativeAIEmbeddings", create_embeddings)
     monkeypatch.setattr(vectordb, "index_documents", index_documents)
 
-    vectordb.main()
+    vectordb.run_db()
 
     assert calls["embedding_kwargs"] == {
         "model": "models/gemini-embedding-001",

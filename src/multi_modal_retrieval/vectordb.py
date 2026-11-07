@@ -10,7 +10,7 @@ from multi_modal_retrieval.loader import load_documents_from_directory
 from multi_modal_retrieval.setup import Paths
 
 
-def main() -> None:
+def run_db() -> None:
     """Load, embed, and index the development dataset.
 
     Raises:
@@ -43,4 +43,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    run_db()
