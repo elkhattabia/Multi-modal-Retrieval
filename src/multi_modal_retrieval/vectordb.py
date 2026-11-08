@@ -10,7 +10,7 @@ from multi_modal_retrieval.vectorize.embedder import index_documents
 from multi_modal_retrieval.vectorize.loader import load_documents_from_directory
 
 
-def run_db() -> None:
+def run_db(api_key: str) -> None:
     """Load, embed, and index the development dataset.
 
     Raises:
@@ -18,11 +18,6 @@ def run_db() -> None:
             returns no text blocks.
     """
     paths = Paths()
-    load_dotenv(paths.base_path / ".env")
-
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        raise SystemExit("Set GEMINI_API_KEY in the .env file.")
 
     blocks = load_documents_from_directory(paths)
 
@@ -32,7 +27,7 @@ def run_db() -> None:
     )
 
     persist_directory = paths.base_path / ".chroma" / "tatdqa_dev"
-    index_documents(
+    store = index_documents(
         documents=blocks,
         embedding=embeddings,
         persist_directory=persist_directory,
@@ -40,7 +35,14 @@ def run_db() -> None:
 
     print(f"Loaded {len(blocks)} blocks and indexed {len(blocks)} chunks.")
     print(f"Chroma collection stored at: {persist_directory}")
+    return store
 
 
 if __name__ == "__main__":
-    run_db()
+    load_dotenv()
+
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        raise SystemExit("Set GEMINI_API_KEY in the .env file.")
+
+    run_db(api_key)
